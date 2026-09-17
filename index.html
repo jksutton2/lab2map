@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lab 2</title>
+
+         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+           integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+           crossorigin=""/>
+
+         <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+           integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+           crossorigin=""></script>
+
+    </head>
+
+    <body>
+
+        <div id="map" style="height: 500px"></div>
+
+        <script type="text/javascript">
+
+          var map = L.map('map', {
+              center: [38.16, -96.96],
+              zoom: 3
+          });
+
+          L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+               attribution: 'Tiles &copy; <a href="https://www.esri.com/">Esri</a>',
+               maxZoom: 10,
+               minZoom: 3
+            }).addTo(map);
+			
+var MyIcon = L.icon({
+iconUrl: 'location-pin.png', //url that links to the icon image file, saved in the same folder as the current page
+iconSize: [32,32], // size of the icon image in pixels
+iconAnchor: [16,32], // the bottom edge of the icon will be aligned so that this point is at the marker's geographical location
+popupAnchor: [0,-10] // point from which the popup should open, relative to the iconAnchor
+});
+
+var marker1 = L.marker([41.98,-87.72], {icon:MyIcon, alt:"Chicago, Illinois"}).addTo(map);
+var marker2 = L.marker([20.97,-89.62],  {icon:MyIcon, alt:"Merida, Mexico"}).addTo(map);
+var marker3=L.marker([37.55,126.99],  {icon:MyIcon, alt:"Seoul, South Korea"}).addTo(map);
+var marker4=L.marker([45.51,-73.55],  {icon:MyIcon, alt:"Montreal, Canada"}).addTo(map);
+var marker5=L.marker([9.93,-84.07], {icon:MyIcon, alt:"San Jose, Costa Rica"}).addTo(map);
+
+var pic1= '<img src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Chicago%2C_Illinois_%2814023988838%29.jpg" alt="Aerial image of the Chicago skyline" width="250">';
+var pic2= '<img src="https://upload.wikimedia.org/wikipedia/commons/d/d2/Plaza_Principal_de_M%C3%A9rida_%22Plaza_Grande%22%2C_Merida%2C_Yucatan%2C_Mexico_-_Marzo_2021.jpg" alt="Plaza Grande, lush with vegetation in Merida Mexico" width="250">';
+var pic3= '<img src="https://upload.wikimedia.org/wikipedia/commons/4/43/N_Seoul_Tower_Panorama_Night.jpg" alt="Seoul Tower with city backdrop at night" width="250">';
+var pic4 = '<img src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Bas%C3%ADlica_de_Notre-Dame%2C_Montreal%2C_Canad%C3%A1%2C_2017-08-12%2C_DD_01-03_HDR.jpg" alt="Basilica de Notre-Dame, Montreal Canada" width="250">';
+var pic5 = '<img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Cityscape_of_San_Jos%C3%A9%2C_Costa_Rica_%28253552473%29.jpg" alt="Skyline of San Jose Costa Rica" width="250">';
+
+marker1.bindPopup('<p style="color: rgb(90,100,110); font-weight:bold"> Chicago, Illinois </p>'+pic1);
+marker2.bindPopup('<p style="color: rgb(40,180,60); font-weight:bold"> Merida, Mexico </p>'+pic2);
+marker3.bindPopup('<p style="color: rgb(60,160,100); font-weight:bold"> Seoul, South Korea </p>'+pic3);
+marker4.bindPopup('<p style="color: rgb(150,50,80); font-weight:bold"> Montreal, Canada </p>'+pic4);
+marker5.bindPopup('<p style="color: rgb(50,100,160); font-weight:bold"> San Jose, Costa Rica </p>'+pic5);
+
+        </script>
+		<h1 style="text-align:center;font-size:25px;color:rgb(20,80,130)";>Top Five Coolest Cities I've Been</h1> 	
+   </body>
+</html>
